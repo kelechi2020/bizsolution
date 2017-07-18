@@ -1,0 +1,32 @@
+{% extends 'base.html%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django web dev</title>
+</head>
+<body>
+<h1>Hello Django</h1>
+<article>{{ my_var}}
+<span>{% if years < 10 %}
+        you are a child
+    {% elif years < 18 %}
+    You are a teenager
+    {% else %}
+    You are an adult
+    {% endif %}
+</span>
+
+    You have {{ nb_products }} product {{ nb_products|pluralize}} in our cart
+
+</article>
+<ul>
+
+    {% for city in array_city %}
+    <li> {{ city | capfirst }} </li>
+    {% endfor %}
+
+</ul>
+
+</body>
+</html>
