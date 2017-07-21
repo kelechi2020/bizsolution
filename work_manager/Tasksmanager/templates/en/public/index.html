@@ -36,6 +36,10 @@
         {% endfor %}
         </tbody>
     </table>
+    <a href="{% url 'create-project' %}">Create Project</a>
+    <a href="{% url 'create-task' %}">Create task</a>
+    <a href="{% url 'project-list' %}">List of projects</a>
+    <a href="{% url 'task-detail' '2' %}">Detail First View</a>
     {% endblock%}
 </article>
 
