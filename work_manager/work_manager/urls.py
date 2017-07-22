@@ -1,9 +1,10 @@
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, UpdateView
 from Tasksmanager.models import Project, Task, Developer
 from django.views.generic.list import ListView
-from Tasksmanager.views.cbv import listviews, DetailView, developerDetailView
+from Tasksmanager.views.cbv import listviews, DetailView, developerDetailView, DeleteView
+from Tasksmanager.views.cbv import UpdateView as UpdateViewmanual
 admin.autodiscover()
 urlpatterns = [
     # Examples:
@@ -19,9 +20,14 @@ urlpatterns = [
     url(r'^create-developer$', 'Tasksmanager.views.create_developer.page', name="create-developer"),
     url(r'^create-supervisor$', 'Tasksmanager.views.create_supervisor.page', name="create-supervisor"),
     url(r'^create-project$', CreateView.as_view(model=Project, template_name="en/public/create_project.html", success_url='index', fields = ['title', 'description']), name="create-project"),
-    url(r'^create-task$', CreateView.as_view(model=Task, template_name="en/public/create_task.html", success_url='index', fields = ['title','developers','description','project'] ), name='create-task'),
-    url(r'^project-list$', listviews.Project_list.as_view(),name = "project-list"),
+    url(r'^create-task$', CreateView.as_view(model=Task, template_name="en/public/create_task.html", success_url='index', fields=['title', 'developers' , 'description', 'project'] ), name='create-task'),
+    url(r'^project-list$', listviews.Project_list.as_view(), name="project-list"),
     url(r'^developer-list$', ListView.as_view(model=Developer, template_name="en/public/developer_list.html", paginate_by=4), name="developer-list"),
     url(r'^task_detail_(?P<pk>\d+)$', DetailView.Task_list.as_view(), name="task-detail"),
-    url(r'^developer-details-(?P<pk>\d+)$',developerDetailView.Developer_detail.as_view(), name='developer-detail')
+    url(r'^developer-details-(?P<pk>\d+)$', developerDetailView.Developer_detail.as_view(), name='developer-detail'),
+    url(r'^update-task-(?P<pk>\d+)$', UpdateView.as_view(model=Task, template_name='en/public/update_task.html', fields=['title', 'developers', 'description', 'project'], success_url='index'), name='update_task'),
+    url(r'^update-task-time-(?P<pk>\d+)$', UpdateViewmanual.Task_update_time.as_view(), name="update-task-time"),
+    url(r'^delete-task-(?P<pk>\d+)$', DeleteView.Task_delete.as_view(), name="delete-task")
+
+
 ]

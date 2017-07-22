@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block title_html %}
-Create Developer
+Create Project
 {% endblock %}
 
-{% block h1 %} Create Developer{% endblock%}
+{% block h1 %} Update Task Teveloper{% endblock%}
 {% block article_content %}
 
-    <form method ="post" action="{% url 'create-supervisor' %}">
+    <form method ="post" action="">
         {% csrf_token %}
         <!--this line inserts a Csrf token. -->
         <table>
@@ -15,7 +15,7 @@ Create Developer
             <!--this line displays the line of the form. -->
 
         </table>
-        <p><input type="submit" value ="create"> </p>
+        <p><input type="submit" value ="create"</p>
 
     </form>
 {% endblock %}

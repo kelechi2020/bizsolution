@@ -1,5 +1,3 @@
-from asyncio.locks import _ContextManager
-
 from django.views.generic import DetailView
 from Tasksmanager.models import Developer, Task
 
