@@ -22,7 +22,7 @@ def page(request):
 
             new_user.is_active = True  # this is false by default to enable you create a system of account verification
             # by e mail or other means
-            new_user.last_name = name
+            new_user.last_name =name
 
             new_user.save()
 
