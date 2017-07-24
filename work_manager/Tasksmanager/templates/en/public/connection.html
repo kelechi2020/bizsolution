@@ -1,32 +1,19 @@
-{% extends 'base.html%}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Django web dev</title>
-</head>
-<body>
-<h1>Hello Django</h1>
-<article>{{ my_var}}
-<span>{% if years < 10 %}
-        you are a child
-    {% elif years < 18 %}
-    You are a teenager
-    {% else %}
-    You are an adult
+{% extends 'base.html' %}
+
+{% block article_content %}
+
+{% if user.is_authenticated %}
+    <h1>You have successfully logged in</h1>
+
+    <p>User Email {{ user.email}}</p>
+{% else %}
+<h2>Please Login here</h2>
+<form method="post" action="{% url 'public_connection' %}">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" class="button" value="Connection">
     {% endif %}
-</span>
-
-    You have {{ nb_products }} product {{ nb_products|pluralize}} in our cart
-
-</article>
-<ul>
-
-    {% for city in array_city %}
-    <li> {{ city | capfirst }} </li>
-    {% endfor %}
-
-</ul>
-
-</body>
-</html>
+    {% endblock %}
+</form>

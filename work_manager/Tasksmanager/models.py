@@ -1,7 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class UserProfile(models.Model):
+    user_auth = models.OneToOneField(User, primary_key=True,on_delete=models.CASCADE)
     name = models.CharField(max_length=50, verbose_name="Name")
     login = models.CharField(max_length=25, verbose_name="Username")
     password = models.CharField(max_length=100, verbose_name="Password")
@@ -14,7 +16,7 @@ class UserProfile(models.Model):
 
 
     def __str__(self):
-        return self.name
+        return self.user_auth.username
 
 
 class Project(models.Model):
@@ -49,6 +51,10 @@ class Task(models.Model):
     def __str__(self):
         return self.title + '' + str(self.project)
 
+    class Meta:
+        verbose_name = "task"
+        verbose_name_plural = "tasks"
+    
 
 class DeveloperWorkTask(models.Model):
     developer = models.ForeignKey(Developer, verbose_name="Developer")

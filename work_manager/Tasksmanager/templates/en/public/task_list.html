@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title_html %}
+
+Tasks list
+
+{% endblock %}
+
+{% block h1 %} Tasks list {% endblock%}
+{% block article_content %}
+<table>
+    <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th colspan="2"><a href="{% url 'create-task' %}">Create</a></th>
+    </tr>
+    {% if last_task %}
+
+    <tr class="important">
+        <td><a href="{% url 'task-detail' last_task.id %}">{{ last_task.title }}</a></td>
+        <td>{{ last_task.description|truncatechars:25 }}</td>
+        <td><a href="{% url 'update_task' last_task.id %}">Edit</a></td>
+        <td><a href="{% url 'delete-task' last_task.id %}">Delete</a></td>
+
+
+    </tr>
+{% endif %}
+    {% for task in tasks_list %}
+    <tr>
+        <td><a href="{% url 'task-detail' task.id %}">{{tak.title}}</a></td>
+        <td>{{ task.description|truncatechars:25 }}</td>
+        <td><a href="{% url 'update_task' task.id %}">Edit</a></td>
+        <td><a href="{% url 'delete-task' task.id %}">Delete</a></td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}

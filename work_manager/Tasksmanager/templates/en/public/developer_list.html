@@ -20,10 +20,10 @@ List of Developers
     <tr>
         <td></td>
         <td></td>
-        <td><a href=" {% url 'developer-detail' dev.id %} ">{{ dev.name }}</a></td>
+        <td><a href="#">{{ dev }}</a></td>
         <td></td>
         <td></td>
-        <td>{{ dev.login }}</td>
+        <td>{{ dev.user_auth.last_name }}</td>
         <td></td>
         <td></td>
         <td>{{ dev.supervisor }}</td>

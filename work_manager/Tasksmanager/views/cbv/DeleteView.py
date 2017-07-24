@@ -17,6 +17,6 @@ class Task_delete(DeleteView):
         #from the Task_delete class instance using pk = self.object.id and adds it to the context data sent to the
         # template for display
 
-        context['task_del'] = task_del 
+        context['task_del'] = task_del
 
         return context
