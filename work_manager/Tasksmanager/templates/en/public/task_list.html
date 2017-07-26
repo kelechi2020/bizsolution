@@ -4,6 +4,11 @@
 Tasks list
 
 {% endblock %}
+{% load staticfiles %}
+{% block head %}
+
+    <script src="{% static 'javascript/task.js' %}"></script>
+{% endblock %}
 
 {% block h1 %} Tasks list {% endblock%}
 {% block article_content %}
@@ -25,12 +30,14 @@ Tasks list
     </tr>
 {% endif %}
     {% for task in tasks_list %}
-    <tr>
-        <td><a href="{% url 'task-detail' task.id %}">{{tak.title}}</a></td>
+    <tr id="task_{{ task.id }}">
+        <td><a href="{% url 'task-detail' task.id %}">{{task.title}}</a></td>
         <td>{{ task.description|truncatechars:25 }}</td>
         <td><a href="{% url 'update_task' task.id %}">Edit</a></td>
-        <td><a href="{% url 'delete-task' task.id %}">Delete</a></td>
-
+         <td><a href="{% url 'delete-task' task.id %}">Delete</a></td>
+        <td><button onclick="javascript:task_delete({{ task.id }}, '{% url 'task_delete_ajax' %}');">Delete</button></td>        <!-- thd delete button above executes the task_delete(),the function calls the the task_delete()
+         to execute ajax request..Note it accepts two parameters 1.task id.identifier =  task.id
+            2. url of the ajax request=% url 'task_delete_ajax' -->
     </tr>
     {% endfor %}
 

@@ -25,17 +25,7 @@
     {% else %}
     <span>no projects available</span>
     {% endif %}
- <table>
-        <thead><tr><td>Id</td><td>Title</td></tr></thead>
-        <tbody>
-        {% for project in filter %}
-        <tr>
-            <td>{{ project.id }}</td>
-            <td>{{ project.title }}</td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+
     <a href="{% url 'create-project' %}">Create Project</a>
     <a href="{% url 'create-task' %}">Create task</a>
     <a href="{% url 'project-list' %}">List of projects</a>

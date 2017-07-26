@@ -11,7 +11,7 @@ error_name = {
     'required': 'you must type a name!', 'invalid': 'Wrong Format'
 }
 
-@login_required()
+@login_required
 def page(request):
     if request.POST:
         form = Form_inscription(request.POST)

@@ -6,7 +6,7 @@ Create Project
 {% block h1 %} Create Project{% endblock%}
 {% block article_content %}
 
-    <form method ="post" action="{% url 'create-project' %}">
+    <form method ="post" action="">
         {% csrf_token %}
         <!--this line inserts a Csrf token. -->
         <table>

@@ -26,8 +26,8 @@ def page(request):
             new_project.save()
             return HttpResponseRedirect(reverse('index'))
         else:
-            return render(request, 'en/public/create_project.html', {'form': form})
+            return render(request, 'en/public/create_task.html', {'form': form})
 
     else:
         form = Form_project_create()
-        return render(request, 'en/public/create_project.html', {'form': form })
+        return render(request, 'en/public/create_task.html', {'form': form })
