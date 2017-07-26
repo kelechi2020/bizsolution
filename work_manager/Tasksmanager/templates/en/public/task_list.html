@@ -28,7 +28,7 @@ Tasks list
 
 
     </tr>
-{% endif %}
+  {% endif %}
     {% for task in tasks_list %}
     <tr id="task_{{ task.id }}">
         <td><a href="{% url 'task-detail' task.id %}">{{task.title}}</a></td>
