@@ -68,6 +68,20 @@ LOGIN_URL = 'public_connection'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
+"""
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':  'comptask',
+        'USER': 'egbosikelechi',
+        'PASSWORD': 'Kellyhandsome123456789',
+        'HOST': 'comptask..database.windows.net',
+        'PORT': '1433',
+    }
+}
+"""
+
 
 DATABASES = {
     'default': {
