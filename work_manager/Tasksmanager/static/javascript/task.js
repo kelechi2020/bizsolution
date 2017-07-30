@@ -16,7 +16,8 @@ function task_delete(id, url){
 }
 function task_delete_confirm(response) {
   task_id = JSON.parse(response);
-  // This line is in the function that receives the AJAX response when the request was successful. This line allows deserializing the JSON response returned by Django views.
+  // This line is in the function that receives the AJAX response when the request was successful.
+  //This line allows deserializing the JSON response returned by Django views.
   if (task_id>0) {
     $('#task_'+task_id).remove();
     // This line will delete the <tr> tag containing the task we have just removed

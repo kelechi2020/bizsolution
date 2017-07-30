@@ -7148,7 +7148,7 @@ ul.instagram-photos li {
     font-size: 0.8rem; }
 
 select {
-  display: none; }
+  display:list-item; }
 
 select.browser-default {
   display: block; }
